@@ -11,8 +11,8 @@ import "../index.css";
 import AddIncomeForm from '../components/AddIncomeForm.jsx';
 import DeleteAlert from '../components/DeleteAlert.jsx';
 import IncomeOverview from '../components/IncomeOverview.jsx';
-import CustomLineChart from '../components/CustomLineChart';
-import { prepareIncomeLineChartData } from "../util/prepareIncomeLineChartData";
+
+
 const Income = () => {
   useUser();
   const [incomeData, setIncomeData] = useState([]);
