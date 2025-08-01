@@ -1,5 +1,6 @@
 package com.nidhi.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import com.nidhi.dto.IncomeDTO;
 import com.nidhi.service.ExpenseService;
 import com.nidhi.service.IncomeService;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -43,5 +45,11 @@ public class IncomeController {
 		incomeService.deleteIncome(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	 @GetMapping("/excel/download/income")
+	    public void downloadIncomeExcel(HttpServletResponse response) {
+	        incomeService.exportIncomeToExcel(response);
+	    }
+
 
 }

@@ -38,7 +38,7 @@ public class SecurityConfig {
             .cors(Customizer.withDefaults())
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/status", "/login", "/health", "/register", "/activate", "/test", "/categories", "/dashboard")
+                .requestMatchers("/status", "/login", "/health", "/register", "/activate", "/test", "/categories", "/dashboard","/expense","/income","/api/v1.0/excel/download/income")
                 .permitAll()
                 .anyRequest().authenticated()
             )
@@ -57,7 +57,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:5173")); // Add your deployed frontend too
+        configuration.setAllowedOriginPatterns(List.of("http://localhost:5173")); // Add your deployed frontend too
         configuration.setAllowedMethods(List.of("GET", "PUT", "POST", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*","Authorization", "Content-Type", "Accept"));
         configuration.setAllowCredentials(true);

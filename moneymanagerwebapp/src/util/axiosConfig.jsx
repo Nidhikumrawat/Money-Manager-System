@@ -4,9 +4,10 @@ import { BASE_URL } from "./apiEndpoints.js";
 const axiosConfig = axios.create({
   baseURL: BASE_URL,
   headers: {
+  //  Authorization:`Bearer${token}`,
     "Content-Type": "application/json",
     Accept: "application/json"
-  }
+  },
 });
 
 
@@ -47,6 +48,7 @@ axiosConfig.interceptors.response.use((response) => {
     console.error("Request timeout - please check your internet connection");
   }
   return Promise.reject(error);
-})
+});
+
 
 export default axiosConfig;

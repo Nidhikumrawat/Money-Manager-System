@@ -20,6 +20,9 @@ import com.nidhi.repository.IncomeRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import jakarta.servlet.http.HttpServletResponse;
 @Service
 @RequiredArgsConstructor
 public class IncomeService {
@@ -113,4 +116,39 @@ public class IncomeService {
 		.updatedAt(entity.getUpdatedAt())
 		.build();	
 	}
+	
+
+public void exportIncomeToExcel(HttpServletResponse response) {
+    try (Workbook workbook = new XSSFWorkbook()) {
+        Sheet sheet = workbook.createSheet("Income Details");
+
+        Row header = sheet.createRow(0);
+        String[] headers = { "ID", "Name", "Amount", "Category", "Date" };
+        for (int i = 0; i < headers.length; i++) {
+            header.createCell(i).setCellValue(headers[i]);
+        }
+
+        ProfileEntity profile = profileService.getCurrentProfile();
+        List<IncomeEntity> incomeList = incomeRepository.findByProfileId(profile.getId());
+
+        int rowNum = 1;
+        for (IncomeEntity income : incomeList) {
+            Row row = sheet.createRow(rowNum++);
+            row.createCell(0).setCellValue(income.getId());
+            row.createCell(1).setCellValue(income.getName());
+            row.createCell(2).setCellValue(income.getAmount().doubleValue());
+            row.createCell(3).setCellValue(income.getCategory() != null ? income.getCategory().getName() : "N/A");
+            row.createCell(4).setCellValue(income.getDate().toString());
+        }
+
+        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        response.setHeader("Content-Disposition", "attachment; filename=income_details.xlsx");
+
+        workbook.write(response.getOutputStream());
+        response.getOutputStream().flush();
+
+    } catch (Exception e) {
+        throw new RuntimeException("Failed to generate Excel file: " + e.getMessage());
+    }
+}
 }
