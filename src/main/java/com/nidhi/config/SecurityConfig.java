@@ -57,7 +57,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(List.of("http://localhost:5173")); // Add your deployed frontend too
+        configuration.setAllowedOriginPatterns(List.of("http://helpful-lolly-45bf35.netlify.app")); // Add your deployed frontend too
         configuration.setAllowedMethods(List.of("GET", "PUT", "POST", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*","Authorization", "Content-Type", "Accept"));
         configuration.setAllowCredentials(true);
