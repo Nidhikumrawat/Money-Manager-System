@@ -163,6 +163,23 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			
+			 <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.5.3</version>
+            <configuration>
+                <!-- Uncomment to skip tests during build -->
+                <!-- <skipTests>true</skipTests> -->
+                
+                <!-- Show detailed stack traces for easier debugging -->
+                <redirectTestOutputToFile>true</redirectTestOutputToFile>
+                <printSummary>true</printSummary>
+                <reportFormat>brief</reportFormat>
+                <useFile>false</useFile>
+            </configuration>
+        </plugin>
+			
 		</plugins>
 	</build>
 

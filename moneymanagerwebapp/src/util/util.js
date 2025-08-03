@@ -26,3 +26,5 @@ export const addThousandsSeparator = (num) => {
   // Combine integer and fractional parts
   return fractionalPart ? `${integerPart}.${fractionalPart}` : integerPart;
 };
+
+

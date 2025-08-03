@@ -1,7 +1,7 @@
 
 export  const prepareIncomeLineChartData = (transactions = []) => {
 
-    console.log("transactions input:", transactions); // <-- Add this line
+    //console.log("transactions input:", transactions); 
   const incomeByDate = {};
 
   transactions.forEach((txn) => {

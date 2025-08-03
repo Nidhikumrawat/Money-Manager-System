@@ -3,8 +3,6 @@ package com.nidhi.repository;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Sort;
 
 import org.springframework.data.jpa.repository.JpaRepository;

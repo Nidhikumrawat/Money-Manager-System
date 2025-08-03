@@ -46,10 +46,6 @@ public class IncomeController {
 		return ResponseEntity.noContent().build();
 	}
 	
-	 @GetMapping("/excel/download/income")
-	    public void downloadIncomeExcel(HttpServletResponse response) {
-	        incomeService.exportIncomeToExcel(response);
-	    }
-
+	
 
 }

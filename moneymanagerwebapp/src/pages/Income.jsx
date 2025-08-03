@@ -123,8 +123,23 @@ const Income = () => {
   }
 
   const handleDownloadIncomeDetails = async () => {
-    try {
-      const response = await axiosConfig.get(API_ENDPOINTS.INCOME_EXCEL_DOWNLOAD, { responseType: "blob" });
+  
+try {
+    const token = localStorage.getItem("token"); // Make sure it's stored correctly
+    if (!token) {
+      toast.error("No token found. Please login again.");
+      return;
+    }
+
+    
+      const response = await axiosConfig.get(API_ENDPOINTS.INCOME_EXCEL_DOWNLOAD, { responseType: "blob",
+         headers: {
+        Authorization: `Bearer ${token}`,  // 🔐 Send JWT token here
+      },
+       });
+
+
+      
       let filename = "income_details.xlsx";
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
@@ -138,11 +153,20 @@ const Income = () => {
     } catch (error) {
       console.log('Error downloading income details:', error);
       toast.error(error.response?.data?.message || "Failed to download income");
-    }
+    } 
   }
 
-  const handleEmailIncomeDetails = () => {
-    console.log('Email income details');
+  const handleEmailIncomeDetails = async () => {
+   
+    try {
+      const response = await axiosConfig.get(API_ENDPOINTS.EMAIL_INCOME);
+      toast.success("Income details emailed successfully");
+    }
+     catch (error) {
+      console.log('Error emailed income details.', error);
+      toast.error(error.response?.data?.message || "Failed to emailed income");
+    }
+
   }
 
   useEffect(() => {
