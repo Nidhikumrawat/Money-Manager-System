@@ -38,6 +38,7 @@ public class SecurityConfig {
             .cors(Customizer.withDefaults())
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> auth
+            	.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() 
                 .requestMatchers("/status", "/login", "/health", "/register", "/activate", "/test", "/categories", "/dashboard","/expense","/income","/excel/download/income")
                 .permitAll()
                 .anyRequest().authenticated()
