@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 
 public class EmailService {
-	
+
 	private final JavaMailSender mailSender;
 	
 	@Value("${spring.mail.properties.mail.smtp.from}")
