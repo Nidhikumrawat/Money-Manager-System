@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-
 public interface ProfileRepository extends JpaRepository<ProfileEntity,Long>{
 
 	//select * from tbl_profiles where email =?1

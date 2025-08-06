@@ -8,9 +8,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.nidhi.entity.ExpenseEntity;
 
+@Repository
 public interface ExpenseRepository extends JpaRepository<ExpenseEntity,Long> {
 
 	//Select * from tbl_expenses where profile_id =?1 order by date desc

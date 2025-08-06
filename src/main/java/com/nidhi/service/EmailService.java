@@ -1,11 +1,10 @@
 package com.nidhi.service;
-
+import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Service;
 import org.springframework.core.io.ByteArrayResource;
 
 import jakarta.activation.DataSource;
@@ -13,10 +12,8 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 
-
-@Service
 @RequiredArgsConstructor
-
+@Service
 public class EmailService {
 
 	private final JavaMailSender mailSender;
