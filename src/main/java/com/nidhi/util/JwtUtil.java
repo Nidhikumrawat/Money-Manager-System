@@ -1,11 +1,10 @@
 package com.nidhi.util;
-
-import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -14,20 +13,23 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
+
 import io.jsonwebtoken.SignatureAlgorithm;
 
 @Service
 public class JwtUtil {
 
     // Secret key should be at least 256 bits (32 bytes) for HS256
-    private static final String SECRET_KEY = "Yf8E94XOPL9ZjaQQE2l6l+K9IDJeIM5VJ30abq7oy4iVTCt1U7ZVQKzqgvbiFqZd8u/3NDvF48YgRHod5UPnrA==";
-
+   // private static final String SECRET_KEY = "Yf8E94XOPL9ZjaQQE2l6l+K9IDJeIM5VJ30abq7oy4iVTCt1U7ZVQKzqgvbiFqZd8u/3NDvF48YgRHod5UPnrA==";
+	@Value("${jwt.secret}")
+	private String SECRET_KEY;
+	
     // Token validity = 10 hours
     private static final long EXPIRATION_TIME = 1000 * 60 * 60 * 10;
 
     
-    Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-    String base64Key = Encoders.BASE64.encode(key.getEncoded());
+    //Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    //String base64Key = Encoders.BASE64.encode(key.getEncoded());
    // System.out.println(base64Key);
 
     

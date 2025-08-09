@@ -3,21 +3,14 @@ package com.nidhi.service;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-
 import org.springframework.data.domain.Sort;
-
 import org.springframework.stereotype.Service;
-
-import com.nidhi.dto.ExpenseDTO;
 import com.nidhi.dto.IncomeDTO;
 import com.nidhi.entity.CategoryEntity;
-import com.nidhi.entity.ExpenseEntity;
 import com.nidhi.entity.IncomeEntity;
 import com.nidhi.entity.ProfileEntity;
 import com.nidhi.repository.CategoryRepository;
 import com.nidhi.repository.IncomeRepository;
-
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 

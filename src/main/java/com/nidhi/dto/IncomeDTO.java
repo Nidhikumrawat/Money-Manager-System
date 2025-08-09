@@ -3,10 +3,6 @@ package com.nidhi.dto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
-import com.nidhi.entity.CategoryEntity;
-import com.nidhi.entity.IncomeEntity;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
