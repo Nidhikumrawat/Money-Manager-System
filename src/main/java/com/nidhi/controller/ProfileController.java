@@ -18,7 +18,6 @@ import com.nidhi.service.ProfileService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-
 @RestController
 @RequiredArgsConstructor
 public class ProfileController {
